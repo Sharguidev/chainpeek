@@ -10,7 +10,7 @@ export default function Web3Provider() {
   return (
     <WagmiProvider config={config}>
       <QueryClientProvider client={queryClient}>
-        <WalletBalance />
+
       </QueryClientProvider>
     </WagmiProvider>
   )

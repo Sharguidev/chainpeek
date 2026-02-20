@@ -1,12 +1,14 @@
-import { WagmiProvider, useAccount, useBalance, useReadContract, useConnect } from 'wagmi'
+import { WagmiProvider, useAccount, useBalance, useReadContract, useConnect, useConnectors } from 'wagmi'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { config } from '../../wagmi.config'
 import { mainnet } from 'wagmi/chains'
 import '../styles/dashboard.css'
+import "./../styles/button.css"
+import { Wallet, Send, HandCoins } from 'lucide-react';
 
 const USDT_ADDRESS = '0xdAC17F958D2ee523a2206206994597C13D831ec7' as const
 
-const erc20BalanceOfAbi = [
+const BalanceOfAbi = [
     {
         name: 'balanceOf',
         type: 'function',
@@ -29,7 +31,7 @@ function DashboardContent() {
 
     const { data: usdtRaw, isLoading: usdtLoading } = useReadContract({
         address: USDT_ADDRESS,
-        abi: erc20BalanceOfAbi,
+        abi: BalanceOfAbi,
         functionName: 'balanceOf',
         args: address ? [address] : undefined,
         chainId: mainnet.id,
@@ -82,18 +84,14 @@ function DashboardContent() {
                         <p className="dashboard-connect-hint">Connect your wallet to view balances</p>
                         <div style={{ display: 'flex', gap: '0.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
                             {connectors.map(connector => (
-                                <button
-                                    key={connector.uid}
-                                    className="dashboard-btn dashboard-btn-primary"
-                                    onClick={() => connect({ connector })}
-                                    style={{ padding: '0.7rem 1.6rem', fontSize: '0.875rem' }}
-                                >
-                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                                        <rect x="1" y="6" width="22" height="14" rx="2" />
-                                        <path d="M16 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4z" fill="currentColor" stroke="none" />
-                                    </svg>
-                                    Connect Wallet
-                                </button>
+                                <div className="user-profile" key={connector.uid}>
+                                    <div className="user-profile-inner">
+                                        <button className='btn-manage-status' onClick={() => connect({ connector })}>
+                                            <Wallet color='white' size={24} />
+                                            Connect Wallet
+                                        </button>
+                                    </div>
+                                </div>
                             ))}
                         </div>
                     </div>
@@ -124,11 +122,11 @@ function DashboardContent() {
 
                     <div className="dashboard-actions">
                         <button className="dashboard-btn dashboard-btn-primary">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M2 12l10-9v5h8v8h-8v5z" /></svg>
+                            <Send />
                             Send
                         </button>
                         <button className="dashboard-btn dashboard-btn-secondary">
-                            <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12l-10 9v-5H4V8h8V3z" /></svg>
+                            <HandCoins />
                             Receive
                         </button>
                         <button className="dashboard-btn-icon">
