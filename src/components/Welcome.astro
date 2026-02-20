@@ -6,10 +6,12 @@ import Web3Provider from "./Web3provider.tsx";
 import { ConnectButton } from "./WalletConnect";
 import Navbar from "./Navbar.astro";
 import Hero from "./Hero.astro";
+import Dashboard from "./Dashboard.astro";
 ---
 
 <div id="container">
 	<Navbar />
 	<Web3Provider client:load />
 	<Hero />
+	<Dashboard />
 </div>
