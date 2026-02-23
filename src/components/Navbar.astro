@@ -1,0 +1,39 @@
+---
+import { WagmiConnectButton } from "./Web3provider";
+import { Coins } from "@lucide/astro";
+---
+
+<header
+    class="sticky top-0 z-50 w-full glass border-b border-white/10 px-6 py-3"
+>
+    <div class="max-w-7xl mx-auto flex items-center justify-between">
+        <div class="flex items-center gap-3">
+            <Coins size={32} color="white" />
+            <h2
+                class="text-xl font-black tracking-tight dark:text-white uppercase italic"
+            >
+                Chain<span class="text-primary">Peek</span>
+            </h2>
+        </div>
+        <nav class="hidden md:flex items-center gap-8">
+            <a class="text-sm font-medium text-white transition-colors" href="#"
+                >Portfolio</a
+            >
+            <a class="text-sm font-medium text-white transition-colors" href="#"
+                >Swap</a
+            >
+            <a class="text-sm font-medium text-white transition-colors" href="#"
+                >Stake</a
+            >
+            <a class="text-sm font-medium text-white transition-colors" href="#"
+                >Market</a
+            >
+            <a class="text-sm font-medium text-white transition-colors" href="#"
+                >Activity</a
+            >
+        </nav>
+        <div class="flex items-center gap-4">
+            <WagmiConnectButton client:load />
+        </div>
+    </div>
+</header>

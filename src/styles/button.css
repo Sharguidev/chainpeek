@@ -1,0 +1,46 @@
+.user-profile {
+    width: 160px;
+    height: 51px;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: 0.3s ease;
+    background: linear-gradient(to bottom right,
+            #2e8eff 0%,
+            rgba(46, 142, 255, 0) 30%);
+    background-color: rgba(46, 142, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.user-profile:hover,
+.user-profile:focus {
+    background-color: rgba(46, 142, 255, 0.7);
+    box-shadow: 0 0 10px rgba(46, 142, 255, 0.5);
+    outline: none;
+}
+
+.user-profile-inner {
+    width: 155px;
+    height: 47px;
+    border-radius: 13px;
+    background-color: #1a1a1a;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    color: #fff;
+    font-weight: 600;
+}
+
+.btn-manage-status {
+    background: none;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0;
+}
