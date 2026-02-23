@@ -9,6 +9,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.6.4",
     "@astrojs/react": "^4.4.2",
     "@lucide/astro": "^0.575.0",
     "@metamask/sdk": "^0.34.0",
